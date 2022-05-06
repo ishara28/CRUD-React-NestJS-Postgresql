@@ -12,7 +12,7 @@ const Home = () => {
           <CCol xs={3}>
             <SideBar />
           </CCol>
-          <CCol xs={9}>
+          <CCol xs={8}>
             <MainRoute/>
           </CCol>
         </CRow>

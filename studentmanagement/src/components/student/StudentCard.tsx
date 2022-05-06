@@ -56,11 +56,16 @@ const StudentCard = ({ id, name, email, age }: Props) => {
             <CCardText> Age : {age}</CCardText>
             <CCardText>Email : {email}</CCardText>
             <CCardFooter>
-              <CButton color="primary" onClick={() => setVisible(true)}>
+              <CButton
+                color="success"
+                size="sm"
+                onClick={() => setVisible(true)}
+              >
                 Edit
               </CButton>
               <CButton
                 color="danger"
+                size="sm"
                 style={{ marginLeft: 5 }}
                 onClick={() => deleteStudent(id)}
               >
