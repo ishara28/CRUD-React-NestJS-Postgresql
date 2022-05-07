@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './student/student.module';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -14,9 +15,10 @@ import { StudentModule } from './student/student.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      synchronize: true, 
+      synchronize: true,
     }),
     StudentModule,
+    TestModule,
   ],
   controllers: [],
   providers: [],

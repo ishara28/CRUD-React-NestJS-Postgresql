@@ -6,6 +6,8 @@ import {
   CCardText,
   CCardFooter,
   CSpinner,
+  CRow,
+  CCol,
 } from "@coreui/react";
 import React from "react";
 import { cilList, cilShieldAlt } from "@coreui/icons";
@@ -52,7 +54,7 @@ const StudentCard = ({ id, name, email, age }: Props) => {
           {/* <CCardImage orientation="top" src="/images/react.jpg" /> */}
 
           <CCardBody>
-            <CCardTitle>Name : {name}</CCardTitle>
+            <CCardText>Name : {name}</CCardText>
             <CCardText> Age : {age}</CCardText>
             <CCardText>Email : {email}</CCardText>
             <CCardFooter>
