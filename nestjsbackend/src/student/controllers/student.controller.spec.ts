@@ -28,6 +28,8 @@ describe('StudentController', () => {
         ...data,
       };
     }),
+
+    getAllStudents: jest.fn().mockImplementation(() => {}),
   };
 
   beforeEach(async () => {
@@ -87,6 +89,20 @@ describe('StudentController', () => {
         age: 25,
         email: 'ish@gmail.com',
       });
+    });
+  });
+
+  describe('getAllStudents', () => {
+    it('should return all the students', async () => {
+      const mockResult = [
+        { id: 43, name: 'Test', email: 'egeg', age: 342 },
+        { id: 44, name: 'Name ', email: 'name@gmail.com', age: 12 },
+      ];
+
+      jest
+        .spyOn(mockStudentService, 'getAllStudents')
+        .mockImplementation(() => mockResult);
+      expect(await controller.getAllStudents()).toBe(mockResult);
     });
   });
 });

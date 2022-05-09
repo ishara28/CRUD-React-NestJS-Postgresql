@@ -87,4 +87,13 @@ describe('StudentService', () => {
       });
     });
   });
+
+  describe('getAllStudents', () => {
+    it('should return all the students', () => {
+      const modkResponse = [
+        { id: 1, name: 'Ishara', email: 'ishara@gmail.com', age: 23 },
+      ];
+      
+    });
+  });
 });
