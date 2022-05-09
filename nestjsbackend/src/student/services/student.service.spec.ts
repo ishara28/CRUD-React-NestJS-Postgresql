@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { async } from 'rxjs';
 import { StudentEntity } from '../models/student.entity';
 import { StudentService } from './student.service';
 
@@ -13,7 +14,7 @@ describe('StudentService', () => {
         Promise.resolve({ id: expect.any(Number), ...student }),
       ),
 
-    findOne: jest.fn().mockImplementation((id: number) =>
+    findOne: jest.fn().mockImplementation(({ where: { id: id } }) =>
       Promise.resolve({
         id: id,
         name: 'Ishara',
@@ -21,6 +22,13 @@ describe('StudentService', () => {
         age: 24,
       }),
     ),
+
+    update: jest.fn().mockImplementation((id, student) => {
+      return {
+        id,
+        ...student,
+      };
+    }),
   };
 
   beforeEach(async () => {
@@ -59,9 +67,23 @@ describe('StudentService', () => {
     it('should get studend by id', async () => {
       expect(await service.getStudentById(1)).toEqual({
         id: 1,
+        name: expect.any(String),
+        email: expect.any(String),
+        age: expect.any(Number),
+      });
+    });
+  });
+
+  describe('updateStudent', () => {
+    it('should update student', async () => {
+      const modkData = {
         name: 'Ishara',
-        email: 'ish@gmail.com',
-        age: 24,
+        email: ' ish@gmail.com',
+        age: 20,
+      };
+      expect(await service.updateStudent(1, modkData)).toEqual({
+        ...modkData,
+        id: 1,
       });
     });
   });
