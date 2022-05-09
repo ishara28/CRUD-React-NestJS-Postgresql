@@ -23,7 +23,7 @@ export class StudentController {
   getAllStudents() {
     return this.studentService.getAllStudents();
   }
-
+      
   @Get(':id')
   getStudentById(@Param('id') id: number) {
     return this.studentService.getStudentById(id);
