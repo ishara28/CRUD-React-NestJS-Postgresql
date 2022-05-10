@@ -16,12 +16,15 @@ export class StudentService {
   }
 
   getAllStudents() {
-    return this.studentRepository.find({
-      order: {
-        id: 'ASC',
-      },
-    });
+    return this.studentRepository.find();
   }
+  // getAllStudents() {
+  //   return this.studentRepository.find({
+  //     order: {
+  //       id: 'ASC',
+  //     },
+  //   });
+  // }
 
   getStudentById(id: number) {
     return this.studentRepository.findOne({

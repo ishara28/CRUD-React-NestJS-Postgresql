@@ -23,6 +23,13 @@ describe('StudentService', () => {
       }),
     ),
 
+    find: jest.fn().mockImplementation(() => {
+      const mockResponse = [
+        { id: 1, name: 'Ishara', email: 'ishara@gmail.com', age: 23 },
+      ];
+      return mockResponse;
+    }),
+
     update: jest.fn().mockImplementation((id, student) => {
       return {
         id,
@@ -89,11 +96,20 @@ describe('StudentService', () => {
   });
 
   describe('getAllStudents', () => {
-    it('should return all the students', () => {
-      const modkResponse = [
-        { id: 1, name: 'Ishara', email: 'ishara@gmail.com', age: 23 },
+    it('should return all the students', async () => {
+      const mockResponse = [
+        {
+          id: expect.any(Number),
+          name: expect.any(String),
+          email: expect.any(String),
+          age: expect.any(Number),
+        },
       ];
-      
+      // jest.spyOn(mockStudentRepository, 'find').mockImplementation(() => {
+      //   mockResponse;
+      // });
+
+      expect(await service.getAllStudents()).toEqual(mockResponse);
     });
   });
 });
